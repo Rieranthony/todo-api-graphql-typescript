@@ -16,11 +16,14 @@ const toDoSchema = new mongoose.Schema({
   deletedAt: Date
 }).set("timestamps", true);
 
-const ToDoModel = mongoose.model<IToDo & mongoose.Document>("ToDo", toDoSchema);
+export const ToDoMongooseModel = mongoose.model<IToDo & mongoose.Document>(
+  "ToDo",
+  toDoSchema
+);
 
 export default class Model {
   public create = async (data: Partial<IToDo>): Promise<IToDo> => {
-    const report = new ToDoModel(data);
+    const report = new ToDoMongooseModel(data);
     return await report.save();
   };
 
@@ -29,11 +32,15 @@ export default class Model {
     keyValue: any,
     data: Partial<IToDo>
   ): Promise<Partial<IToDo> | null> => {
-    const report = await ToDoModel.findOneAndUpdate({ [key]: keyValue }, data, {
-      new: true,
-      runValidators: true,
-      upsert: true
-    })
+    const report = await ToDoMongooseModel.findOneAndUpdate(
+      { [key]: keyValue },
+      data,
+      {
+        new: true,
+        runValidators: true,
+        upsert: true
+      }
+    )
       .lean()
       .exec();
 
@@ -50,7 +57,7 @@ export default class Model {
     key: keyof IToDo,
     value: any
   ): Promise<Partial<IToDo>> => {
-    const result = await ToDoModel.find({ [key]: value })
+    const result = await ToDoMongooseModel.find({ [key]: value })
       .limit(1)
       .lean()
       .exec();
@@ -59,7 +66,9 @@ export default class Model {
   };
 
   public getAll = async (): Promise<Partial<IToDo>[]> => {
-    const result = await ToDoModel.find({ deletedAt: null }).lean();
+    const result = await ToDoMongooseModel.find({
+      deletedAt: undefined
+    }).lean();
 
     return result;
   };

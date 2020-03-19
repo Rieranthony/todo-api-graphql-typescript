@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToDo should return an array of to do 1`] = `
+Object {
+  "data": Object {
+    "getAllToDo": Array [
+      Object {
+        "_id": "5e16075abba89142f8f2afd2",
+      },
+      Object {
+        "_id": "5e1607772c8db465edc44a4c",
+      },
+      Object {
+        "_id": "5e1607819c9eb8b8be169cf2",
+      },
+      Object {
+        "_id": "5e1607878d043e453fcdfea2",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`ToDo should return an empty array if there is not todo 1`] = `
+Object {
+  "data": Object {
+    "getAllToDo": Array [],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

@@ -26,3 +26,7 @@ You can access to the GraphQL playground here (http://localhost:5000/graphql)
 ### Build and start the API for production
 
 - `$ npm start`
+
+### Run test with Jest
+
+- `$ npm test`

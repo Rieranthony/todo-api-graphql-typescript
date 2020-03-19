@@ -18,7 +18,7 @@ export default class ToDoService {
     value: any
   ): Promise<Partial<IToDo>> => this.model.findBy(key, value);
 
-  public delete = async (_id: string): Promise<Partial<IToDo>> =>
+  public delete = async (_id: string): Promise<Partial<IToDo> | null> =>
     this.model.delete(_id);
 
   public updateBy = async (

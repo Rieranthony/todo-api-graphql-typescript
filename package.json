@@ -1,0 +1,31 @@
+{
+  "name": "todo-api-graphql-typescript",
+  "version": "1.0.0",
+  "description": "A basic todo api using NodeJS, Typescript, Apollo server and mongoDB",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts | bunyan",
+    "start": "tsc && node ./build/index.js  | bunyan"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.3",
+    "@types/mongoose": "^5.7.6",
+    "@types/node": "^13.9.2",
+    "apollo-server-express": "^2.11.0",
+    "bunyan": "^1.8.12",
+    "express": "^4.17.1",
+    "graphql": "^14.6.0",
+    "helmet": "^3.21.3",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.9.5",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@types/helmet": "0.0.45",
+    "@types/lodash": "^4.14.149"
+  }
+}

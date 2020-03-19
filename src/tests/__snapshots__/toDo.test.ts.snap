@@ -1,5 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ToDo should create a to do 1`] = `
+Object {
+  "data": Object {
+    "createToDo": Object {
+      "description": "Test create description todo",
+      "status": "PENDING",
+      "title": "Test create todo",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`ToDo should delete a to do 1`] = `
+Object {
+  "data": undefined,
+  "errors": Array [
+    [GraphQLError: Variable "$_id" of required type "ID!" was not provided.],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`ToDo should return a specific todo 1`] = `
+Object {
+  "data": Object {
+    "getToDo": Object {
+      "_id": "5e1607772c8db465edc44a4c",
+      "status": "PENDING",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
 exports[`ToDo should return an array of to do 1`] = `
 Object {
   "data": Object {
@@ -28,12 +80,27 @@ Object {
 }
 `;
 
-exports[`ToDo should return an empty array if there is not todo 1`] = `
+exports[`ToDo should return an empty array if there is no todo 1`] = `
 Object {
   "data": Object {
     "getAllToDo": Array [],
   },
   "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`ToDo should update a to do 1`] = `
+Object {
+  "data": undefined,
+  "errors": Array [
+    [GraphQLError: Variable "$input" got invalid value { id: "5e16075abba89142f8f2afd2", title: "Updated todo title", description: "Updated todo description", status: "DONE" }; Field "id" is not defined by type ToDoInput. Did you mean _id?],
+  ],
   "extensions": undefined,
   "http": Object {
     "headers": Headers {

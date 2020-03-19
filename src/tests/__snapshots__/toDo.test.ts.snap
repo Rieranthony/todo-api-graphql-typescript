@@ -21,10 +21,14 @@ Object {
 
 exports[`ToDo should delete a to do 1`] = `
 Object {
-  "data": undefined,
-  "errors": Array [
-    [GraphQLError: Variable "$_id" of required type "ID!" was not provided.],
-  ],
+  "data": Object {
+    "deleteToDo": Object {
+      "_id": "5e16075abba89142f8f2afd2",
+      "description": "Desc 1",
+      "title": "Todo 1",
+    },
+  },
+  "errors": undefined,
   "extensions": undefined,
   "http": Object {
     "headers": Headers {
@@ -97,9 +101,43 @@ Object {
 
 exports[`ToDo should update a to do 1`] = `
 Object {
-  "data": undefined,
+  "data": Object {
+    "updateToDo": Object {
+      "_id": "5e16075abba89142f8f2afd2",
+      "description": "Updated todo description",
+      "title": "Updated todo title",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`ToDo shouldn't create a to do with a DONE status in params 1`] = `
+Object {
+  "data": null,
   "errors": Array [
-    [GraphQLError: Variable "$input" got invalid value { id: "5e16075abba89142f8f2afd2", title: "Updated todo title", description: "Updated todo description", status: "DONE" }; Field "id" is not defined by type ToDoInput. Did you mean _id?],
+    [GraphQLError: You can't create a to do with a DONE status],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`ToDo shouldn't create a to do with a ID in params 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: You can't create a to do with an ID],
   ],
   "extensions": undefined,
   "http": Object {

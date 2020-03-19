@@ -169,6 +169,74 @@ describe("ToDo", () => {
     expect(res).toMatchSnapshot();
   });
 
+  it(`shouldn't create a to do with a ID in params`, async () => {
+    const server = new ApolloServer({
+      schema: graphQLSchema
+    });
+
+    // use the test server to create a query function
+    const { mutate } = createTestClient(server);
+
+    const CREATE_TO_DO = gql`
+      mutation createToDo($input: ToDoInput!) {
+        createToDo(input: $input) {
+          title
+          description
+          status
+        }
+      }
+    `;
+
+    // run query against the server and snapshot the output
+    const res = await mutate({
+      mutation: CREATE_TO_DO,
+      variables: {
+        input: {
+          _id: "blalala",
+          title: "Test create todo",
+          description: "Test create description todo"
+        }
+      }
+    });
+
+    expect(res.errors).toBeDefined();
+    expect(res).toMatchSnapshot();
+  });
+
+  it(`shouldn't create a to do with a DONE status in params`, async () => {
+    const server = new ApolloServer({
+      schema: graphQLSchema
+    });
+
+    // use the test server to create a query function
+    const { mutate } = createTestClient(server);
+
+    const CREATE_TO_DO = gql`
+      mutation createToDo($input: ToDoInput!) {
+        createToDo(input: $input) {
+          title
+          description
+          status
+        }
+      }
+    `;
+
+    // run query against the server and snapshot the output
+    const res = await mutate({
+      mutation: CREATE_TO_DO,
+      variables: {
+        input: {
+          title: "Test create todo",
+          description: "Test create description todo",
+          status: ToDoStatus.DONE
+        }
+      }
+    });
+
+    expect(res.errors).toBeDefined();
+    expect(res).toMatchSnapshot();
+  });
+
   it(`should update a to do`, async () => {
     const server = new ApolloServer({
       schema: graphQLSchema
@@ -195,7 +263,7 @@ describe("ToDo", () => {
       mutation: UPDATE_TO_DO,
       variables: {
         input: {
-          id: mockTodo[0]._id,
+          _id: mockTodo[0]._id,
           title: "Updated todo title",
           description: "Updated todo description",
           status: ToDoStatus.DONE
@@ -231,7 +299,7 @@ describe("ToDo", () => {
     const res = await mutate({
       mutation: DELETE_TO_DO,
       variables: {
-        id: mockTodo[0]._id
+        _id: mockTodo[0]._id
       }
     });
 

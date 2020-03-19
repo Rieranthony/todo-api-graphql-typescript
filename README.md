@@ -30,3 +30,7 @@ You can access to the GraphQL playground here (http://localhost:5000/graphql)
 ### Run test with Jest
 
 - `$ npm test`
+
+### Run a test coverage with Jest
+
+- `$ npm test -- --coverage`

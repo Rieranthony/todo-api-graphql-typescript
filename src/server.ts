@@ -1,5 +1,5 @@
 import { Mongoose } from "mongoose";
-import { ApolloServer as IApolloServer, gql } from "apollo-server-express";
+import { ApolloServer as IApolloServer } from "apollo-server-express";
 import * as IExpress from "express";
 import * as helmet from "helmet";
 import * as cors from "cors";
@@ -55,20 +55,6 @@ export default ({ config, mongoose, ApolloServer, express }: IDependencies) => {
   app.use(helmet());
 
   app.use(bodyParser.json());
-
-  // Construct a schema, using GraphQL schema language
-  const typeDefs = gql`
-    type Query {
-      hello: String
-    }
-  `;
-
-  // Provide resolver functions for your schema fields
-  const resolvers = {
-    Query: {
-      hello: () => "Hello world!"
-    }
-  };
 
   const server = new ApolloServer({
     schema: graphQLSchema,

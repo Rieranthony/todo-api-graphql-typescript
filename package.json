@@ -20,7 +20,7 @@
     "express": "^4.17.1",
     "graphql": "^14.6.0",
     "helmet": "^3.21.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mongoose": "^5.9.5",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
